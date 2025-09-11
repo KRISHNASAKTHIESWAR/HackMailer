@@ -6,7 +6,7 @@ from googleapiclient.discovery import build
 from google.auth.transport.requests import Request
 
 # Define the Gmail API scope to read emails
-SCOPES = ['https://www.googleapis.com/auth/gmail.readonly']
+SCOPES = ['https://www.googleapis.com/auth/gmail.readonly', 'https://www.googleapis.com/auth/calendar']
 
 def authenticate_gmail():
     creds = None
@@ -24,5 +24,7 @@ def authenticate_gmail():
     return creds
 
 
-creds = authenticate_gmail()
-service = build('gmail', 'v1', credentials=creds)
+# creds = authenticate_gmail()
+# service = build('gmail', 'v1', credentials=creds)
+# calendar_service = build('calendar', 'v3', credentials=creds)
+
