@@ -1,0 +1,10 @@
+# Ignore Google OAuth tokens and credentials
+token.json
+credentials.json
+
+# Ignore Python virtual environments
+venv/
+env/
+__pycache__/
+*.pyc
+.env
