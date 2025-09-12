@@ -11,6 +11,6 @@ def extract_registration_links(html_body):
     if not links:
         for a in soup.find_all('a', href=True):
             href = a['href']
-            if any(domain in href.lower() for domain in ['devpost', 'hackerearth', 'challenge', 'hackathon']):
+            if any(domain in href.lower() for domain in ['devpost', 'hackerearth', 'challenge', 'hackathon', 'competitions','competition']):
                 links.append(href)
     return links
