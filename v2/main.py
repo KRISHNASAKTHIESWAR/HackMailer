@@ -1,9 +1,18 @@
-from auth import authenticate_gmail
-from fetchmail import fetch_hackathon_emails, get_email_html_body
-from extract_link import extract_registration_links
-from get_date import scrape_deadline_and_name_static, scrape_deadline_and_name_dynamic
-from calendar_event import create_calendar_event
-from deadline_parse import parse_deadline
+#MANUAL RUN CHECK
+
+from utils.auth import authenticate_gmail
+from utils.fetchmail import fetch_hackathon_emails, get_email_html_body
+from utils.extract_link import extract_registration_links
+from utils.get_date import scrape_deadline_and_name_static, scrape_deadline_and_name_dynamic
+from utils.calendar_event import create_calendar_event
+from utils.deadline_parse import parse_deadline
+from server import pull_messages
+import os
+from dotenv import load_dotenv as dotenv
+dotenv()
+
+project_id = os.getenv("project_id")
+subscription_id = os.getenv("subscription_id")
 
 from googleapiclient.discovery import build
 
@@ -46,6 +55,7 @@ def main():
         except Exception as e:
             print(f"Error processing email {msg_id}: {e}\n")
 
+        pull_messages(project_id, subscription_id)
+
 if __name__ == "__main__":
     main()
-
