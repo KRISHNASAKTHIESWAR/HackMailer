@@ -1,6 +1,8 @@
 import dateparser
 
 def parse_deadline(deadline_str):
+    if not deadline_str:
+        return None
     if deadline_str.startswith("OCR Dates found:"):
         # When OCR fallback returns, no direct parse, handle separately or skip
         print(f"OCR fallback date candidates: {deadline_str}")
